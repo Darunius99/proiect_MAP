@@ -1,37 +1,42 @@
 #include <stdio.h>
 
-void convertToRoman(int num) {
-    // Array de valori și simboluri romane corespunzătoare
-    char *romans[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", 
-                      "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C", 
-                      "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM", "M"};
-    int values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
-                    10, 20, 30, 40, 50, 60, 70, 80, 90, 
-                    100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
-    
-    printf("Numar roman: %s\n", romans[num]);
+void convertToRoman(int number) {
+    struct RomanNumeral {
+        int value;
+        char *symbol;
+    };
+
+    struct RomanNumeral roman[] = {
+        {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
+        {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
+        {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"},
+        {1, "I"}
+    };
+
+    int i = 0;
+    while (number > 0) {
+        while (number >= roman[i].value) {
+            printf("%s", roman[i].symbol);
+            number -= roman[i].value;
+        }
+        i++;
+    }
 }
 
 int main() {
-    int num;
-    int result;
+    int number;
 
-    // Așteaptă introducerea unui număr
-    printf("Introduceti un numar intre 1 si 3999: ");
-    result = scanf("%d", &num);
+    printf("Enter a number (1-3999): ");
+    scanf("%d", &number);
 
-    // Verifică dacă inputul este valid
-    if (result != 1) {
-        printf("Nu ați introdus un număr valid.\n");
-        return 1; // Iese din program în caz de eroare
+    if (number <= 0 || number > 3999) {
+        printf("Number must be between 1 and 3999.\n");
+        return 1;
     }
 
-    // Verifică dacă numărul este în intervalul permis
-    if (num < 1 || num > 3999) {
-        printf("Numarul trebuie sa fie intre 1 si 3999.\n");
-    } else {
-        convertToRoman(num);
-    }
+    printf("Roman numeral: ");
+    convertToRoman(number);
+    printf("\n");
 
     return 0;
 }
