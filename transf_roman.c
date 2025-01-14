@@ -1,42 +1,37 @@
 #include <stdio.h>
 
-void transformaInRoman(int numar) {
-    struct NumarRoman {
-        int valoare;
-        char *simbol;
-    };
-
-    struct NumarRoman numereRomane[] = {
-        {1000, "M"}, {900, "CM"}, {500, "D"}, {400, "CD"},
-        {100, "C"}, {90, "XC"}, {50, "L"}, {40, "XL"},
-        {10, "X"}, {9, "IX"}, {5, "V"}, {4, "IV"},
-        {1, "I"}
-    };
-
-    int i = 0;
-    while (numar > 0) {
-        while (numar >= numereRomane[i].valoare) {
-            printf("%s", numereRomane[i].simbol);
-            numar -= numereRomane[i].valoare;
-        }
-        i++;
-    }
+void convertToRoman(int num) {
+    // Array de valori și simboluri romane corespunzătoare
+    char *romans[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", 
+                      "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C", 
+                      "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM", "M"};
+    int values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+                    10, 20, 30, 40, 50, 60, 70, 80, 90, 
+                    100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
+    
+    printf("Numar roman: %s\n", romans[num]);
 }
 
 int main() {
-    int numar;
+    int num;
+    int result;
 
-    printf("Introduceți un număr între 1 și 3999: ");
-    scanf("%d", &numar);
+    // Așteaptă introducerea unui număr
+    printf("Introduceti un numar intre 1 si 3999: ");
+    result = scanf("%d", &num);
 
-    if (numar <= 0 || numar > 3999) {
-        printf("Numărul trebuie să fie între 1 și 3999.\n");
-        return 1;
+    // Verifică dacă inputul este valid
+    if (result != 1) {
+        printf("Nu ați introdus un număr valid.\n");
+        return 1; // Iese din program în caz de eroare
     }
 
-    printf("Numărul în sistem roman: ");
-    transformaInRoman(numar);
-    printf("\n");
+    // Verifică dacă numărul este în intervalul permis
+    if (num < 1 || num > 3999) {
+        printf("Numarul trebuie sa fie intre 1 si 3999.\n");
+    } else {
+        convertToRoman(num);
+    }
 
     return 0;
 }
