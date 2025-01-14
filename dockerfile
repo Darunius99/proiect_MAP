@@ -1,14 +1,14 @@
-# Folosește o imagine de bază cu GCC pentru a compila codul C
+# Imaginea de bază cu compilatorul GCC
 FROM gcc:latest
 
-# Setează directorul de lucru
+# Setează directorul de lucru în container
 WORKDIR /app
 
-# Copiază sursele din folderul curent în container
-COPY . /app
+# Copiază fișierul sursă în container
+COPY transf_roman.c .
 
-# Compilăm codul C
+# Compilează codul sursă în fișierul executabil
 RUN gcc -o transf_roman transf_roman.c
 
-# Setează comanda care va rula la pornirea containerului
+# Comanda implicită pentru rularea aplicației
 CMD ["./transf_roman"]

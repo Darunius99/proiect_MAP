@@ -1,7 +1,7 @@
 # Proiect: Transformarea numărului zecial în sitemul de numeratie romane
 
 ## Scopul proiectului
-Acest proiect are ca scop transformarea unui număr arab (între 1 și 3999) într-un număr roman .
+Acest proiect are ca scop transformarea unui număr arab (între 1 și 3999) într-un număr roman git.
 
 ## Detalii de implementare
 Proiectul pe care l-am realizat este în limbajul de programare C. Codul sursă este compilat cu ajutorul GCC și poate fi rulat atât local cât și într-un container Docker.Explicația programului:
