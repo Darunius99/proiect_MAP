@@ -1,4 +1,4 @@
-# Proiect: Transformarea numărului zecial în sitemul de numeratie romane
+# Proiect: Transformarea numărului zecimal în sitemul de numeratie romane
 
 ## Scopul proiectului
 Acest proiect are ca scop transformarea unui număr arab (între 1 și 3999) într-un număr roman git.
