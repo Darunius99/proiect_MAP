@@ -37,7 +37,7 @@ Proiectul pe care l-am realizat este în limbajul de programare C. Codul sursă 
 
 ## Instrucțiuni de rulare
 docker pull darunius99/transf_roman:v1
-docker run darunius99/transf_roman:v1
+docker run -it darunius99/transf_roman:v1
 
 ### Local (fără Docker):
 1. Clonați repository-ul:
